@@ -1,0 +1,19 @@
+{
+  "customers": [
+    {
+      "id": "cust-demo-1",
+      "name": "Ananya Sharma",
+      "email": "demo@oneaboveall.test",
+      "password": "demo1234",
+      "phone": "9876543210"
+    }
+  ],
+  "admins": [
+    {
+      "id": "admin-demo-1",
+      "name": "OAA Admin",
+      "email": "admin@oneaboveall.test",
+      "password": "admin1234"
+    }
+  ]
+}

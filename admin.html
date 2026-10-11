@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — ONE ABOVE ALL</title>
+<meta name="description" content="ONE ABOVE ALL admin dashboard (demo).">
+<link rel="icon" href="images/logo/file_00000000b9708208ab4f4c02c714b822.png">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css?v=1791699641">
+</head>
+<body>
+
+<div class="demo-banner"><i class="fa-solid fa-circle-info"></i>Demo mode — everything here is stored only in this browser (localStorage), not a real server or database.</div>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <img src="images/logo/file_00000000b9708208ab4f4c02c714b822.png" alt="ONE ABOVE ALL logo">
+      <span class="brand-text"><strong>One Above All</strong><span>Admin Dashboard</span></span>
+    </a>
+    <div class="nav-actions">
+      <span style="font-size:0.82rem;color:var(--ink-soft);margin-right:4px;" data-admin-name></span>
+      <a class="btn btn-outline btn-sm" href="index.html">View Site</a>
+      <button class="btn btn-primary btn-sm" type="button" data-admin-logout>Log Out</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="admin-shell">
+        <aside class="admin-sidebar">
+          <nav>
+            <button class="admin-nav-btn active" data-tab="sales"><i class="fa-solid fa-chart-line"></i> <span>Sales</span></button>
+            <button class="admin-nav-btn" data-tab="orders"><i class="fa-solid fa-box"></i> <span>Orders</span></button>
+            <button class="admin-nav-btn" data-tab="products"><i class="fa-solid fa-bag-shopping"></i> <span>Products</span></button>
+            <button class="admin-nav-btn" data-tab="categories"><i class="fa-solid fa-grip"></i> <span>Shop by Category</span></button>
+            <button class="admin-nav-btn" data-tab="featured"><i class="fa-solid fa-heart"></i> <span>Loved by You</span></button>
+            <button class="admin-nav-btn" data-tab="proof"><i class="fa-solid fa-images"></i> <span>See Them in Action</span></button>
+            <button class="admin-nav-btn" data-tab="testimonials"><i class="fa-solid fa-quote-left"></i> <span>Customer Love</span></button>
+            <button class="admin-nav-btn" data-tab="reviews"><i class="fa-solid fa-star"></i> <span>Reviews</span></button>
+          </nav>
+        </aside>
+
+        <div class="admin-content">
+
+          <!-- SALES -->
+          <section class="admin-panel active" data-panel="sales">
+            <div class="admin-panel-head"><h2>Sales</h2></div>
+            <div class="admin-card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:end;">
+              <div class="form-field" style="margin:0;"><label>From</label><input type="date" data-sales-from></div>
+              <div class="form-field" style="margin:0;"><label>To</label><input type="date" data-sales-to></div>
+              <button class="btn btn-primary btn-sm" type="button" data-sales-apply>Apply</button>
+              <button class="btn btn-outline btn-sm" type="button" data-sales-reset>All Time</button>
+            </div>
+            <div class="admin-stat-row">
+              <div class="admin-stat"><strong data-stat-orders>0</strong><span>Orders in range</span></div>
+              <div class="admin-stat"><strong data-stat-revenue>₹0</strong><span>Revenue in range</span></div>
+              <div class="admin-stat"><strong data-stat-avg>₹0</strong><span>Average order value</span></div>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead><tr><th>Order</th><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+                <tbody data-sales-rows></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ORDERS -->
+          <section class="admin-panel" data-panel="orders">
+            <div class="admin-panel-head"><h2>Orders</h2></div>
+            <div data-orders-admin-list></div>
+          </section>
+
+          <!-- PRODUCTS -->
+          <section class="admin-panel" data-panel="products">
+            <div class="admin-panel-head"><h2>Products</h2><button class="btn btn-primary btn-sm" type="button" data-add-product>+ Add Product</button></div>
+            <p style="font-size:0.84rem;color:var(--ink-soft);margin-bottom:16px;">Built-in products can be hidden from the shop but not edited here. Products you add can be fully edited or removed.</p>
+            <div class="admin-card" data-product-form hidden></div>
+            <div data-product-list></div>
+          </section>
+
+          <!-- SHOP CATEGORIES -->
+          <section class="admin-panel" data-panel="categories">
+            <div class="admin-panel-head"><h2>Shop by Category</h2><button class="btn btn-primary btn-sm" type="button" data-add="categories">+ Add Category</button></div>
+            <div data-list="categories"></div>
+            <div class="admin-card" data-form="categories" hidden></div>
+          </section>
+
+          <!-- FEATURED PRODUCTS -->
+          <section class="admin-panel" data-panel="featured">
+            <div class="admin-panel-head"><h2>Loved by You (Homepage Featured Products)</h2><button class="btn btn-primary btn-sm" type="button" data-featured-save>Save Order</button></div>
+            <p style="font-size:0.84rem;color:var(--ink-soft);margin-bottom:16px;">Tick the products you want on the homepage "Loved by you" row, and set a priority number (lower shows first).</p>
+            <div data-featured-list></div>
+          </section>
+
+          <!-- PROOF GALLERY -->
+          <section class="admin-panel" data-panel="proof">
+            <div class="admin-panel-head"><h2>See Them in Action</h2><button class="btn btn-primary btn-sm" type="button" data-add="proof">+ Add Item</button></div>
+            <div data-list="proof"></div>
+            <div class="admin-card" data-form="proof" hidden></div>
+          </section>
+
+          <!-- TESTIMONIALS -->
+          <section class="admin-panel" data-panel="testimonials">
+            <div class="admin-panel-head"><h2>Customer Love (Homepage Carousel)</h2><button class="btn btn-primary btn-sm" type="button" data-add="testimonials">+ Add Testimonial</button></div>
+            <div data-list="testimonials"></div>
+            <div class="admin-card" data-form="testimonials" hidden></div>
+          </section>
+
+          <!-- REVIEWS -->
+          <section class="admin-panel" data-panel="reviews">
+            <div class="admin-panel-head"><h2>Reviews</h2></div>
+            <div class="admin-card">
+              <h3 style="font-size:0.98rem;margin-bottom:14px;">Add a Review</h3>
+              <div class="admin-inline-form">
+                <input type="text" placeholder="Customer name" data-rv-name>
+                <select data-rv-rating>
+                  <option value="5">5 stars</option>
+                  <option value="4">4 stars</option>
+                  <option value="3">3 stars</option>
+                  <option value="2">2 stars</option>
+                  <option value="1">1 star</option>
+                </select>
+                <input type="text" placeholder="Product name" data-rv-product class="full">
+                <textarea placeholder="Review text" data-rv-text class="full"></textarea>
+                <button class="btn btn-primary btn-sm full" type="button" data-rv-add>Add Review</button>
+              </div>
+            </div>
+            <div data-reviews-admin-list></div>
+          </section>
+
+        </div>
+  </div>
+</main>
+
+<script src="js/products-data.js?v=1791699641"></script>
+<script src="js/reviews-data.js?v=1791699641"></script>
+<script src="js/demo-data.js?v=1791699641"></script>
+<script src="js/admin.js?v=1791699641"></script>
+</body>
+</html>
